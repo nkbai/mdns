@@ -1,0 +1,17 @@
+language: go
+go:
+- '1.10'
+sudo: false
+install:
+script:
+  - go get  ./...
+  - go build
+  - pwd
+  - pwd
+  - go test -v  -failfast -timeout 10m -short `go list ./... | grep -v contracts |grep -v casemanager`
+
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
